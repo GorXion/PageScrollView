@@ -41,7 +41,7 @@ class PageScrollView: UIView {
         return menuView
     }()
     
-    lazy var scrollView: UIScrollView = {
+    private lazy var scrollView: UIScrollView = {
         let scrollView = UIScrollView(frame: CGRect(x: 0, y: menuHeight, width: bounds.width, height: bounds.height - menuHeight))
         scrollView.delegate = self
         scrollView.isPagingEnabled = true

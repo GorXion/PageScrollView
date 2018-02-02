@@ -23,7 +23,7 @@ class TabMenuView: UIView {
     }
     public var didSelectItemHandler: ((Int) -> Void)?
 
-    lazy var collectionView: UICollectionView = {
+    private lazy var collectionView: UICollectionView = {
         let flowLayout = UICollectionViewFlowLayout()
         flowLayout.minimumLineSpacing = 0
         flowLayout.minimumInteritemSpacing = 0
@@ -38,13 +38,13 @@ class TabMenuView: UIView {
         return collectionView
     }()
 
-    lazy var dataSource: [TabMenuModel] = {
+    private lazy var dataSource: [TabMenuModel] = {
         titles.map({
             TabMenuModel(title: $0, titleNormalColor: UIColor.black, titleSelectedColor: UIColor.blue, backgroundLayerColor: nil, underlineColor: UIColor.red)
         })
     }()
 
-    lazy var itemWidths: [CGFloat] = {
+    private lazy var itemWidths: [CGFloat] = {
         titles.map({
             CGFloat($0.count * 15 + 30)
         })
@@ -75,6 +75,17 @@ class TabMenuView: UIView {
         let indexPath = IndexPath(item: index, section: 0)
         collectionView.selectItem(at: indexPath, animated: true, scrollPosition: .centeredHorizontally)
         currentIndex = index
+    }
+    
+    public func configureItemStyle(normalColor: UIColor,
+                                   selectedColor: UIColor,
+                                   underlineColor: UIColor,
+                                   backgroundLayerColor: UIColor = .clear) {
+        dataSource = dataSource.map({
+            TabMenuModel(title: $0.title, titleNormalColor: normalColor, titleSelectedColor: selectedColor, backgroundLayerColor: backgroundLayerColor, underlineColor: underlineColor)
+        })
+        collectionView.reloadData()
+        collectionView.selectItem(at: IndexPath(item: currentIndex, section: 0), animated: false, scrollPosition: .centeredHorizontally)
     }
 }
 

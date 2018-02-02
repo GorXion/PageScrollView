@@ -21,6 +21,7 @@ class ViewController: UIViewController {
         pageScrollView.delegate = self
         view.addSubview(pageScrollView)
         pageScrollView.reloadData()
+        pageScrollView.menuView.configureItemStyle(normalColor: UIColor.brown, selectedColor: UIColor.cyan, underlineColor: UIColor.blue)
     }
 
     override func didReceiveMemoryWarning() {

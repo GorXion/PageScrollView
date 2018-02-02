@@ -16,7 +16,7 @@ struct TabMenuModel {
     var underlineColor: UIColor?
 }
 
-class TabMenuCell: UICollectionViewCell {
+final class TabMenuCell: UICollectionViewCell {
 
     private let underlineHeight: CGFloat = 2.0
     private let backgroundLayerHeight: CGFloat = 3.0
