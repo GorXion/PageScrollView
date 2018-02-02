@@ -9,6 +9,8 @@
 import UIKit
 
 class ViewController: UIViewController {
+    
+    private let titles = ["第一页", "第二页", "第三页", "第四页", "第五页", "第六页"]
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,8 +32,8 @@ class ViewController: UIViewController {
 }
 
 extension ViewController: PageScrollViewDataSource {
-    func numberOfSections(in pageScrollView: PageScrollView) -> Int {
-        return 3
+    func numberOfItems(in pageScrollView: PageScrollView) -> Int {
+        return titles.count
     }
     
     func pageScrollView(_ pageScrollView: PageScrollView, itemForIndexAt index: Int) -> UIView {
@@ -41,11 +43,11 @@ extension ViewController: PageScrollViewDataSource {
         redView.backgroundColor = UIColor.red
         let greenView = UIView()
         greenView.backgroundColor = UIColor.green
-        return [whiteView, redView, greenView][index]
+        return [whiteView, redView, greenView, whiteView, redView, greenView][index]
     }
     
     func pageScrollView(_ pageScrollView: PageScrollView, titleForIndexAt index: Int) -> String {
-        return ["第一页", "第二页", "第三页"][index]
+        return titles[index]
     }
 }
 

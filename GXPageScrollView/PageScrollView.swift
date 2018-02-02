@@ -10,7 +10,7 @@ import UIKit
 
 protocol PageScrollViewDataSource: class {
     
-    func numberOfSections(in pageScrollView: PageScrollView) -> Int
+    func numberOfItems(in pageScrollView: PageScrollView) -> Int
     
     func pageScrollView(_ pageScrollView: PageScrollView, itemForIndexAt index: Int) -> UIView
     
@@ -83,7 +83,7 @@ class PageScrollView: UIView {
     
     public func reloadData() {
         guard let dataSource = dataSource else { return }
-        let count = dataSource.numberOfSections(in: self)
+        let count = dataSource.numberOfItems(in: self)
         guard count > 0 else { return }
         
         titles.removeAll()
