@@ -23,13 +23,13 @@ final class TabMenuCell: UICollectionViewCell {
 
     lazy var backgroundLayer: CALayer = {
         let layer = CALayer()
-        layer.frame = CGRect(x: 0, y: 0, width: self.contentView.bounds.width, height: backgroundLayerHeight)
+        layer.frame = CGRect(x: 0, y: 0, width: contentView.bounds.width, height: backgroundLayerHeight)
         return layer
     }()
 
     lazy var titleButton: UIButton = {
         let btn = UIButton(type: .custom)
-        btn.frame = self.contentView.bounds
+        btn.frame = contentView.bounds
         btn.isUserInteractionEnabled = false
         btn.titleLabel?.font = UIFont.systemFont(ofSize: 14)
         return btn
@@ -37,7 +37,7 @@ final class TabMenuCell: UICollectionViewCell {
 
     lazy var underline: CALayer = {
         let layer = CALayer()
-        layer.frame = CGRect(x: self.contentView.center.x, y: self.contentView.bounds.height - underlineHeight, width: 0, height: underlineHeight)
+        layer.frame = CGRect(x: contentView.center.x, y: contentView.bounds.height - underlineHeight, width: 0, height: underlineHeight)
         return layer
     }()
 
@@ -73,9 +73,9 @@ final class TabMenuCell: UICollectionViewCell {
         didSet {
             let flag = TabMenuCell.deselectDisabled ? oldValue : isSelected
             titleButton.isSelected = flag
-            backgroundLayer.frame.size.height = flag ? self.contentView.bounds.height : backgroundLayerHeight
-            underline.frame.origin.x = flag ? 0 : self.contentView.center.x
-            underline.frame.size.width = flag ? self.contentView.bounds.width : 0
+            backgroundLayer.frame.size.height = flag ? contentView.bounds.height : backgroundLayerHeight
+            underline.frame.origin.x = flag ? 0 : contentView.center.x
+            underline.frame.size.width = flag ? contentView.bounds.width : 0
         }
     }
 

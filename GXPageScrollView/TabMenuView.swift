@@ -28,7 +28,7 @@ class TabMenuView: UIView {
         flowLayout.minimumLineSpacing = 0
         flowLayout.minimumInteritemSpacing = 0
         flowLayout.scrollDirection = .horizontal
-        let collectionView = UICollectionView(frame: self.bounds, collectionViewLayout: flowLayout)
+        let collectionView = UICollectionView(frame: bounds, collectionViewLayout: flowLayout)
         collectionView.backgroundColor = .white
         collectionView.dataSource = self
         collectionView.delegate = self
@@ -61,6 +61,12 @@ class TabMenuView: UIView {
 
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        
+        collectionView.frame = bounds
     }
 
     // MARK: - private
@@ -113,9 +119,9 @@ extension TabMenuView: UICollectionViewDelegate {
             return
         }
         currentIndex = indexPath.item
-        if didSelectItemHandler != nil {
-            didSelectItemHandler!(currentIndex)
-        }
+        didSelectItemHandler.map({
+            $0(currentIndex)
+        })
     }
 }
 

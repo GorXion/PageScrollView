@@ -31,18 +31,18 @@ extension PageScrollViewDelegate {
 
 class PageScrollView: UIView {
     
-    private let menuHeight: CGFloat = 44.0
+    private let kMenuHeight: CGFloat = 44.0
     
     public weak var dataSource: PageScrollViewDataSource?
     public weak var delegate: PageScrollViewDelegate?
     
     lazy var menuView: TabMenuView = {
-        let menuView = TabMenuView(frame: CGRect(x: 0, y: 0, width: bounds.width, height: menuHeight))
+        let menuView = TabMenuView(frame: CGRect(x: 0, y: 0, width: bounds.width, height: kMenuHeight))
         return menuView
     }()
     
     private lazy var scrollView: UIScrollView = {
-        let scrollView = UIScrollView(frame: CGRect(x: 0, y: menuHeight, width: bounds.width, height: bounds.height - menuHeight))
+        let scrollView = UIScrollView(frame: CGRect(x: 0, y: kMenuHeight, width: bounds.width, height: bounds.height - kMenuHeight))
         scrollView.delegate = self
         scrollView.isPagingEnabled = true
         scrollView.bounces = false
@@ -66,8 +66,8 @@ class PageScrollView: UIView {
     override func layoutSubviews() {
         super.layoutSubviews()
         
-        menuView.frame = CGRect(x: 0, y: 0, width: bounds.width, height: menuHeight)
-        scrollView.frame = CGRect(x: 0, y: menuHeight, width: bounds.width, height: bounds.height - menuHeight)
+        menuView.frame = CGRect(x: 0, y: 0, width: bounds.width, height: kMenuHeight)
+        scrollView.frame = CGRect(x: 0, y: kMenuHeight, width: bounds.width, height: bounds.height - kMenuHeight)
     }
     
     private func addSubviews() {
@@ -82,6 +82,7 @@ class PageScrollView: UIView {
     }
     
     public func reloadData() {
+        
         guard let dataSource = dataSource else { return }
         let count = dataSource.numberOfItems(in: self)
         guard count > 0 else { return }
