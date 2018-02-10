@@ -15,8 +15,8 @@
 		B5DB8083202450CD000554B7 /* GXPageScrollViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5DB8082202450CD000554B7 /* GXPageScrollViewTests.swift */; };
 		B5DB808E202450CD000554B7 /* GXPageScrollViewUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5DB808D202450CD000554B7 /* GXPageScrollViewUITests.swift */; };
 		B5DB809C202450DF000554B7 /* PageScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5DB809B202450DF000554B7 /* PageScrollView.swift */; };
-		B5DB809F20245130000554B7 /* TabMenuCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5DB809D20245130000554B7 /* TabMenuCell.swift */; };
-		B5DB80A020245130000554B7 /* TabMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5DB809E20245130000554B7 /* TabMenuView.swift */; };
+		B5DB809F20245130000554B7 /* PageMenuCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5DB809D20245130000554B7 /* PageMenuCell.swift */; };
+		B5DB80A020245130000554B7 /* PageMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5DB809E20245130000554B7 /* PageMenuView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,8 +51,8 @@
 		B5DB808D202450CD000554B7 /* GXPageScrollViewUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GXPageScrollViewUITests.swift; sourceTree = "<group>"; };
 		B5DB808F202450CD000554B7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B5DB809B202450DF000554B7 /* PageScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageScrollView.swift; sourceTree = "<group>"; };
-		B5DB809D20245130000554B7 /* TabMenuCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabMenuCell.swift; sourceTree = "<group>"; };
-		B5DB809E20245130000554B7 /* TabMenuView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabMenuView.swift; sourceTree = "<group>"; };
+		B5DB809D20245130000554B7 /* PageMenuCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PageMenuCell.swift; sourceTree = "<group>"; };
+		B5DB809E20245130000554B7 /* PageMenuView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PageMenuView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,8 +106,8 @@
 				B5DB806D202450CD000554B7 /* AppDelegate.swift */,
 				B5DB806F202450CD000554B7 /* ViewController.swift */,
 				B5DB809B202450DF000554B7 /* PageScrollView.swift */,
-				B5DB809D20245130000554B7 /* TabMenuCell.swift */,
-				B5DB809E20245130000554B7 /* TabMenuView.swift */,
+				B5DB809D20245130000554B7 /* PageMenuCell.swift */,
+				B5DB809E20245130000554B7 /* PageMenuView.swift */,
 				B5DB8071202450CD000554B7 /* Main.storyboard */,
 				B5DB8074202450CD000554B7 /* Assets.xcassets */,
 				B5DB8076202450CD000554B7 /* LaunchScreen.storyboard */,
@@ -268,10 +268,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B5DB809F20245130000554B7 /* TabMenuCell.swift in Sources */,
+				B5DB809F20245130000554B7 /* PageMenuCell.swift in Sources */,
 				B5DB8070202450CD000554B7 /* ViewController.swift in Sources */,
 				B5DB809C202450DF000554B7 /* PageScrollView.swift in Sources */,
-				B5DB80A020245130000554B7 /* TabMenuView.swift in Sources */,
+				B5DB80A020245130000554B7 /* PageMenuView.swift in Sources */,
 				B5DB806E202450CD000554B7 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

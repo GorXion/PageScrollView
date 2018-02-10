@@ -1,5 +1,5 @@
 //
-//  TabMenuCell.swift
+//  PageMenuCell.swift
 //  FirstJapaneseLife
 //
 //  Created by G-Xi0N on 2017/12/14.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-struct TabMenuModel {
+struct PageMenuModel {
     var title: String?
     var titleNormalColor: UIColor?
     var titleSelectedColor: UIColor?
@@ -16,7 +16,7 @@ struct TabMenuModel {
     var underlineColor: UIColor?
 }
 
-final class TabMenuCell: UICollectionViewCell {
+final class PageMenuCell: UICollectionViewCell {
 
     private let underlineHeight: CGFloat = 2.0
     private let backgroundLayerHeight: CGFloat = 3.0
@@ -41,7 +41,7 @@ final class TabMenuCell: UICollectionViewCell {
         return layer
     }()
 
-    var model: TabMenuModel? {
+    var model: PageMenuModel? {
         didSet {
             backgroundLayer.backgroundColor = model?.backgroundLayerColor?.cgColor
             titleButton.setTitleColor(model?.titleNormalColor, for: .normal)
@@ -65,13 +65,13 @@ final class TabMenuCell: UICollectionViewCell {
 
     override var isHighlighted: Bool {
         didSet {
-            TabMenuCell.deselectDisabled = isHighlighted
+            PageMenuCell.deselectDisabled = isHighlighted
         }
     }
 
     override var isSelected: Bool {
         didSet {
-            let flag = TabMenuCell.deselectDisabled ? oldValue : isSelected
+            let flag = PageMenuCell.deselectDisabled ? oldValue : isSelected
             titleButton.isSelected = flag
             backgroundLayer.frame.size.height = flag ? contentView.bounds.height : backgroundLayerHeight
             underline.frame.origin.x = flag ? 0 : contentView.center.x

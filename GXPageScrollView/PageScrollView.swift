@@ -36,8 +36,8 @@ class PageScrollView: UIView {
     public weak var dataSource: PageScrollViewDataSource?
     public weak var delegate: PageScrollViewDelegate?
     
-    lazy var menuView: TabMenuView = {
-        let menuView = TabMenuView(frame: CGRect(x: 0, y: 0, width: bounds.width, height: kMenuHeight))
+    lazy var menuView: PageMenuView = {
+        let menuView = PageMenuView(frame: CGRect(x: 0, y: 0, width: bounds.width, height: kMenuHeight))
         return menuView
     }()
     

@@ -1,5 +1,5 @@
 //
-//  TabMenuView.swift
+//  PageMenuView.swift
 //  FirstJapaneseLife
 //
 //  Created by G-Xi0N on 2017/12/14.
@@ -8,14 +8,14 @@
 
 import UIKit
 
-class TabMenuView: UIView {
+class PageMenuView: UIView {
 
     public var titles: [String] {
         didSet {
             guard titles.count > 0 else { return }
             
             for index in 0..<titles.count {
-                collectionView.register(TabMenuCell.self, forCellWithReuseIdentifier: "TabMenuCell_\(index)")
+                collectionView.register(PageMenuCell.self, forCellWithReuseIdentifier: "PageMenuCell_\(index)")
             }
             collectionView.reloadData()
             collectionView.selectItem(at: IndexPath(item: 0, section: 0), animated: false, scrollPosition: .centeredHorizontally)
@@ -38,9 +38,9 @@ class TabMenuView: UIView {
         return collectionView
     }()
 
-    private lazy var dataSource: [TabMenuModel] = {
+    private lazy var dataSource: [PageMenuModel] = {
         titles.map({
-            TabMenuModel(title: $0, titleNormalColor: UIColor.black, titleSelectedColor: UIColor.blue, backgroundLayerColor: nil, underlineColor: UIColor.red)
+            PageMenuModel(title: $0, titleNormalColor: UIColor.black, titleSelectedColor: UIColor.blue, backgroundLayerColor: nil, underlineColor: UIColor.red)
         })
     }()
 
@@ -88,7 +88,7 @@ class TabMenuView: UIView {
                                    underlineColor: UIColor,
                                    backgroundLayerColor: UIColor = .clear) {
         dataSource = dataSource.map({
-            TabMenuModel(title: $0.title, titleNormalColor: normalColor, titleSelectedColor: selectedColor, backgroundLayerColor: backgroundLayerColor, underlineColor: underlineColor)
+            PageMenuModel(title: $0.title, titleNormalColor: normalColor, titleSelectedColor: selectedColor, backgroundLayerColor: backgroundLayerColor, underlineColor: underlineColor)
         })
         collectionView.reloadData()
         collectionView.selectItem(at: IndexPath(item: currentIndex, section: 0), animated: false, scrollPosition: .centeredHorizontally)
@@ -96,21 +96,21 @@ class TabMenuView: UIView {
 }
 
 // MARK: - UICollectionViewDataSource
-extension TabMenuView: UICollectionViewDataSource {
+extension PageMenuView: UICollectionViewDataSource {
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return dataSource.count
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell: TabMenuCell = collectionView.dequeueReusableCell(withReuseIdentifier: "TabMenuCell_\(indexPath.item)", for: indexPath) as! TabMenuCell
+        let cell: PageMenuCell = collectionView.dequeueReusableCell(withReuseIdentifier: "PageMenuCell_\(indexPath.item)", for: indexPath) as! PageMenuCell
         cell.model = dataSource[indexPath.item]
         return cell
     }
 }
 
 // MARK: - UICollectionViewDelegate
-extension TabMenuView: UICollectionViewDelegate {
+extension PageMenuView: UICollectionViewDelegate {
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         collectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
@@ -126,7 +126,7 @@ extension TabMenuView: UICollectionViewDelegate {
 }
 
 // MARK: - UICollectionViewDelegateFlowLayout
-extension TabMenuView: UICollectionViewDelegateFlowLayout {
+extension PageMenuView: UICollectionViewDelegateFlowLayout {
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: itemWidths[indexPath.item], height: bounds.height)
