@@ -10,7 +10,7 @@ import UIKit
 
 class PageMenuView: UIView {
 
-    public var titles: [String] {
+    public var titles: [String] = [] {
         didSet {
             guard titles.count > 0 else { return }
             
@@ -38,12 +38,6 @@ class PageMenuView: UIView {
         return collectionView
     }()
 
-    private lazy var dataSource: [PageMenuModel] = {
-        titles.map({
-            PageMenuModel(title: $0, titleNormalColor: UIColor.black, titleSelectedColor: UIColor.blue, backgroundLayerColor: nil, underlineColor: UIColor.red)
-        })
-    }()
-
     private lazy var itemWidths: [CGFloat] = {
         titles.map({
             CGFloat($0.count * 15 + 30)
@@ -51,9 +45,11 @@ class PageMenuView: UIView {
     }()
 
     private var currentIndex = 0
+    private var normalColor = UIColor.black
+    private var selectedColor = UIColor.blue
+    private var underlineColor = UIColor.blue
     
     override init(frame: CGRect) {
-        self.titles = []
         super.init(frame: frame)
         
         addSubviews()
@@ -71,7 +67,7 @@ class PageMenuView: UIView {
 
     // MARK: - private
     private func addSubviews() {
-        self.addSubview(collectionView)
+        addSubview(collectionView)
     }
 
     // MARK: - public
@@ -87,11 +83,9 @@ class PageMenuView: UIView {
                                    selectedColor: UIColor,
                                    underlineColor: UIColor,
                                    backgroundLayerColor: UIColor = .clear) {
-        dataSource = dataSource.map({
-            PageMenuModel(title: $0.title, titleNormalColor: normalColor, titleSelectedColor: selectedColor, backgroundLayerColor: backgroundLayerColor, underlineColor: underlineColor)
-        })
-        collectionView.reloadData()
-        collectionView.selectItem(at: IndexPath(item: currentIndex, section: 0), animated: false, scrollPosition: .centeredHorizontally)
+        self.normalColor = normalColor
+        self.selectedColor = selectedColor
+        self.underlineColor = underlineColor
     }
 }
 
@@ -99,12 +93,15 @@ class PageMenuView: UIView {
 extension PageMenuView: UICollectionViewDataSource {
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return dataSource.count
+        return titles.count
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell: PageMenuCell = collectionView.dequeueReusableCell(withReuseIdentifier: "PageMenuCell_\(indexPath.item)", for: indexPath) as! PageMenuCell
-        cell.model = dataSource[indexPath.item]
+        cell.titleButton.setTitleColor(normalColor, for: .normal)
+        cell.titleButton.setTitleColor(selectedColor, for: .selected)
+        cell.underline.backgroundColor = underlineColor.cgColor
+        cell.title = titles[indexPath.item]
         return cell
     }
 }

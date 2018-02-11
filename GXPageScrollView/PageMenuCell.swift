@@ -8,20 +8,12 @@
 
 import UIKit
 
-struct PageMenuModel {
-    var title: String?
-    var titleNormalColor: UIColor?
-    var titleSelectedColor: UIColor?
-    var backgroundLayerColor: UIColor?
-    var underlineColor: UIColor?
-}
-
 final class PageMenuCell: UICollectionViewCell {
 
     private let underlineHeight: CGFloat = 2.0
     private let backgroundLayerHeight: CGFloat = 3.0
 
-    lazy var backgroundLayer: CALayer = {
+    private lazy var backgroundLayer: CALayer = {
         let layer = CALayer()
         layer.frame = CGRect(x: 0, y: 0, width: contentView.bounds.width, height: backgroundLayerHeight)
         return layer
@@ -41,13 +33,9 @@ final class PageMenuCell: UICollectionViewCell {
         return layer
     }()
 
-    var model: PageMenuModel? {
+    public var title: String = "" {
         didSet {
-            backgroundLayer.backgroundColor = model?.backgroundLayerColor?.cgColor
-            titleButton.setTitleColor(model?.titleNormalColor, for: .normal)
-            titleButton.setTitleColor(model?.titleSelectedColor, for: .selected)
-            titleButton.setTitle(model?.title, for: .normal)
-            underline.backgroundColor = model?.underlineColor?.cgColor;
+            titleButton.setTitle(title, for: .normal)
         }
     }
 
